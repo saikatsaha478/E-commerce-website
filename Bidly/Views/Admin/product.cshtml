@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Bidly.Dal.Tbl_product>
+
+@{
+    ViewBag.Title = "product";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<h2>Product List</h2>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Prouduct Details
+        <a href="../Admin/productAdd" class="btn btn-info pull-right fa fa-plus ">Add New</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Product Name</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        int count = 1;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Product_Name</td>
+                            <td>
+                                @Html.ActionLink("EDIT", "productedit", new { productID=item.Product_Id })
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+

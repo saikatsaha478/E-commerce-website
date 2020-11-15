@@ -1,0 +1,35 @@
+﻿@model Bidly.Models.category_detail
+@{
+    ViewBag.Title = "Updatecategory";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Categories</li>
+        <li class="breadcrumb-item active">Add New Categorie</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Add New Category
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Updatecategory", "Admin", FormMethod.Post, new { enctype = "multipart/formdata" }))
+            {@Html.HiddenFor(m => m.Category_Id);
+                <div class="form-group">
+                    <label class="control-label">Category Name</label>
+                    @Html.TextBoxFor(m => m.Category_Name, new { @class = "form-control", placeholder = "Enter category Name", required = "required", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.Category_Name, "", new { @class = "text-danger" })
+                </div>
+                <a onclick="window.histort.back();" class="btn btn-danger">Cancel</a>
+                <input type="submit" class="btn btn-primary" value="Save">
+            }
+            </div>
+        </div>
+    </div>
